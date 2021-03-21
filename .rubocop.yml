@@ -1,0 +1,11 @@
+AllCops:
+  NewCops: disable
+
+Style/Documentation:
+  Enabled: false
+
+Metrics/BlockLength:
+  CountComments: false
+  Max: 25
+  Exclude:
+    - config/environments/*
