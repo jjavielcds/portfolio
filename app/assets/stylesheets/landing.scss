@@ -200,7 +200,7 @@ ul, nav, body, h1, h2, h4, h6, p, figure {
   /* Set width and height in JS */
   .placeholder {
     width: 100%;
-    min-height: 460px;
+    min-height: 150px;
     background-image: url('hero.jpg');
     background-repeat: round;
     position: relative;
@@ -249,6 +249,9 @@ ul, nav, body, h1, h2, h4, h6, p, figure {
   .tm-site-description {
     font-size: 1.1rem;
     font-weight: 400;
+  }
+  nav a{
+    color: white;
   }
   
   .tm-nav {
