@@ -1,0 +1,23 @@
+
+<div class="col-md-12 placeholder">
+	<div class="d-flex">
+		<div class="col-md-6">
+			<img src="<%= image_url('simple-house-logo.png') %>" alt="Logo" class="tm-site-logo" /> 
+			<div class="tm-site-text-box">
+				<h1 class="tm-site-title">Simple House</h1>
+				<h6 class="tm-site-description">new restaurant template</h6>	
+			</div>
+		</div>
+		<nav class="col-md-6">
+			<ul class="tm-nav-ul">
+				<li class="tm-nav-li"><%= link_to 'Home', root_path%></li>
+				<li class="tm-nav-li"><%= link_to 'Investments', investments_path %></li>
+				<% if current_user.present? %>
+					<li class="tm-nav-li"><%= link_to('Logout', destroy_user_session_path, method: :delete)%></li>
+				<% else %>
+					<li class="tm-nav-li"><%= link_to('Login', new_user_session_path)%></li>
+				<% end %>
+			</ul>
+		</nav>	
+	</div>
+</div>
