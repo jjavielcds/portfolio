@@ -12,7 +12,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_312_105_757) do
+ActiveRecord::Schema.define(version: 20_210_321_210_248) do
+  create_table 'investments', force: :cascade do |t|
+    t.string 'name'
+    t.decimal 'tir', precision: 10, scale: 5
+    t.integer 'kind', null: false
+    t.integer 'user_id'
+    t.datetime 'created_at', precision: 6, null: false
+    t.datetime 'updated_at', precision: 6, null: false
+    t.index ['user_id'], name: 'index_investments_on_user_id'
+  end
+
   create_table 'users', force: :cascade do |t|
     t.string 'email', default: '', null: false
     t.string 'encrypted_password', default: '', null: false
@@ -24,4 +34,6 @@ ActiveRecord::Schema.define(version: 20_210_312_105_757) do
     t.index ['email'], name: 'index_users_on_email', unique: true
     t.index ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true
   end
+
+  add_foreign_key 'investments', 'users'
 end
