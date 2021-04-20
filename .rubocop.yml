@@ -9,3 +9,4 @@ Metrics/BlockLength:
   Max: 25
   Exclude:
     - config/environments/*
+    - config/initializers/simple_form_bootstrap.rb
