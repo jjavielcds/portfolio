@@ -42,7 +42,7 @@ class InvestmentsController < ApplicationController
   private
 
   def set_users
-    @users = User.all.map{ |user| [user.email, user.id] }
+    @users = User.all.map { |user| [user.email, user.id] }
   end
 
   def set_investment

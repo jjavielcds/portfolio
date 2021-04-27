@@ -12,7 +12,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_210_321_210_248) do
+ActiveRecord::Schema.define(version: 20_210_427_225_343) do
   create_table 'investments', force: :cascade do |t|
     t.string 'name'
     t.decimal 'tir', precision: 10, scale: 5
@@ -20,6 +20,11 @@ ActiveRecord::Schema.define(version: 20_210_321_210_248) do
     t.integer 'user_id'
     t.datetime 'created_at', precision: 6, null: false
     t.datetime 'updated_at', precision: 6, null: false
+    t.date 'start_date'
+    t.date 'end_date'
+    t.decimal 'initial_value', precision: 10, scale: 5
+    t.decimal 'final_value', precision: 10, scale: 5
+    t.integer 'coin'
     t.index ['user_id'], name: 'index_investments_on_user_id'
   end
 
