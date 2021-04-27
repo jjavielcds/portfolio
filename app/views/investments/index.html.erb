@@ -9,18 +9,32 @@
     </tr>
   </thead>
 
-  <tbody>
-    <% @investments.each do |investment| %>
-      <tr>
-        <td><%= link_to investment.name, investment %></td>
-        <td><%= link_to 'Show', investment %></td>
-        <td><%= link_to 'Edit', edit_investment_path(investment) %></td>
-        <td><%= link_to 'Destroy', investment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Investment', new_investment_path %>
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Tir</th>
+      <th scope="col">Kind</th>
+      <th scope="col"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @investments.each do |investment| %>
+      <tr>
+        <td><%= link_to investment.name, investment %></td>
+        <td><%= link_to investment.tir, investment %></td>
+        <td><%= link_to investment.kind, investment %></td>
+        <td>
+          <%= link_to 'Show', investment %>
+          <%= link_to 'Edit', edit_investment_path(investment) %>
+          <%= link_to 'Destroy', investment, method: :delete, data: { confirm: 'Are you sure?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= link_to 'New Investment', new_investment_path, class: 'btn btn-primary' %>

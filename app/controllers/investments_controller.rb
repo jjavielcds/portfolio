@@ -2,6 +2,7 @@
 
 class InvestmentsController < ApplicationController
   before_action :set_investment, only: %i[show edit update destroy]
+  before_action :set_users, only: %i[new edit]
 
   def index
     @investments = Investment.all
@@ -39,6 +40,10 @@ class InvestmentsController < ApplicationController
   end
 
   private
+
+  def set_users
+    @users = User.all.map{ |user| [user.email, user.id] }
+  end
 
   def set_investment
     @investment = Investment.find(params[:id])
