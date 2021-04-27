@@ -11,9 +11,14 @@
       </ul>
     </div>
   <% end %>
-  <%= f.input :name %>
-  <%= f.input :tir %>
-  <%= f.input :kind %>
-  <%= f.input :user_id %>
-  <%= f.button :submit %>
+  <%= f.input :name, required: true %>
+  <%= f.input :tir, required: true %>
+  <%= f.input :kind,  collection: Investment.kinds.keys, required: true %>
+  <%= f.input :start_date, required: true %>
+  <%= f.input :end_date %>
+  <%= f.input :initial_value %>
+  <%= f.input :final_value %>
+  <%= f.input :coin, collection: Investment.coins.keys, required: true %>
+  <%= f.input( :user_id, collection: @users, required: true)%>
+  <%= f.button :submit, class: 'btn btn-primary' %>
 <% end %>
