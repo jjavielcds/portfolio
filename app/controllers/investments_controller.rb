@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 class InvestmentsController < ApplicationController
-  before_action :set_investment, only: %i[show edit update destroy]
-  before_action :set_users, only: %i[new edit]
+  before_action :investment, only: %i[show edit]
 
   def index
     @investments = Investment.all
@@ -27,29 +26,29 @@ class InvestmentsController < ApplicationController
   end
 
   def update
-    if @investment.update(investment_params)
-      redirect_to @investment, notice: 'Investment was successfully updated.'
+    if investment.update(investment_params)
+      redirect_to investment, notice: 'Investment was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end
   end
 
   def destroy
-    @investment.destroy
+    investment.destroy
     redirect_to investments_url, notice: 'Investment was successfully destroyed.'
   end
 
   private
 
-  def set_users
-    @users = User.all.map { |user| [user.email, user.id] }
-  end
-
-  def set_investment
-    @investment = Investment.find(params[:id])
+  def investment
+    @investment ||= Investment.find(params[:id])
   end
 
   def investment_params
-    params.require(:investment).permit!
+    params.require(:investment).permit!.merge(extra_params)
+  end
+
+  def extra_params
+    { user: current_user }
   end
 end

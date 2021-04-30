@@ -1,15 +1,16 @@
-nav{
+.nav-bar{
   width: 100%;
-  min-height: 150px;
   background-image: url('hero.jpg');
   background-repeat: round;
   position: relative;
-}
-
-nav, nav a{
   color: white;
+
+  
+  &__content{
+    background-color: #00000080;
+    padding: 50px 20px 20px 20px;
+  }
+
+  a { color: white; }
 }
 
-.nav-text{
-  background-color: #00000080;
-}
