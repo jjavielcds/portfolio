@@ -21,16 +21,27 @@ class Investment < ApplicationRecord
   belongs_to :user
   enum kind: { cheque: 0, other: 1 }
   enum coin: { peso: 0, dolar: 1 }
+  before_save :set_tir, unless: :tir?
+  before_save :set_final_value, unless: :final_value?
 
   validates :name,
             :kind,
             :start_date,
             :initial_value,
             :coin,
-            presence: true
+            presence: true  
 
   private
   
+  def set_final_value
+    return if tir.blank? || end_date.blank?
+
+    self.final_value = 2 ** (Math.log(tir/100 + 1, 2)/(360 / (end_date-start_date)) + Math.log(initial_value, 2))
+  end
+  
   def set_tir
+    return if final_value.blank? || end_date.blank?
+
+    self.tir = (((final_value/initial_value) ** (360 / (end_date-start_date))) - 1)*100
   end
 end
