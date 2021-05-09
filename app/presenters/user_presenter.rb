@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class UserPresenter
   attr_accessor :user
   delegate_missing_to :user
@@ -16,9 +18,9 @@ class UserPresenter
 
   def weighted_average(kind = nil)
     full_value = 0
-    result = investments(kind).pluck(:tir, :initial_value).map do | tir, value |
+    result = investments(kind).pluck(:tir, :initial_value).map do |tir, value|
       full_value += value
-      tir*value
+      tir * value
     end.sum / full_value
     result.round(2)
   end
@@ -29,4 +31,3 @@ class UserPresenter
     user.investments.where(kind: kind)
   end
 end
-  

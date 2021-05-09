@@ -29,19 +29,19 @@ class Investment < ApplicationRecord
             :start_date,
             :initial_value,
             :coin,
-            presence: true  
+            presence: true
 
   private
-  
+
   def set_final_value
     return if tir.blank? || end_date.blank?
 
-    self.final_value = 2 ** (Math.log(tir/100 + 1, 2)/(360 / (end_date-start_date)) + Math.log(initial_value, 2))
+    self.final_value = 2**(Math.log(tir / 100 + 1, 2) / (360 / (end_date - start_date)) + Math.log(initial_value, 2))
   end
-  
+
   def set_tir
     return if final_value.blank? || end_date.blank?
 
-    self.tir = (((final_value/initial_value) ** (360 / (end_date-start_date))) - 1)*100
+    self.tir = (((final_value / initial_value)**(360 / (end_date - start_date))) - 1) * 100
   end
 end
