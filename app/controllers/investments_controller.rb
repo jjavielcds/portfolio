@@ -36,7 +36,7 @@ class InvestmentsController < ApplicationController
       }
       Investment.create(investment_data)
     end
-    redirect_to investments_path, notice: 'Investment was successfully created.'
+    redirect_to investments_path, notice: 'Investments was successfully created.'
   end
 
   def create
