@@ -11,15 +11,15 @@ class UserPresenter
   end
 
   def tir_average(kind = nil)
-    investments(kind).average(:tir)
+    investments(kind).average(:tir).round(2)
   end
 
   def weighted_average(kind = nil)
     full_value = 0
     result = investments(kind).pluck(:tir, :initial_value).map do | tir, value |
       full_value += value
-      tir/value
-    end.sum * full_value
+      tir*value
+    end.sum / full_value
     result.round(2)
   end
 

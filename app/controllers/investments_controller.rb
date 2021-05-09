@@ -15,6 +15,30 @@ class InvestmentsController < ApplicationController
 
   def edit; end
 
+  def bulk_load; end
+
+  def create_bulk_investments
+    data = Roo::Spreadsheet.open(params.require(:investments)["investments_xlsx"])
+    # ["Fecha", "Librador", "Moneda", "Monto", "Vencimiento", "Compra", "Margen neto", "TIR inversor"]
+    data.each_with_index do |row, index|
+      next if index == 0
+
+      investment_data = {
+        start_date: row[0],
+        name: row[1],
+        coin: row[2].include?('UY') ? 'peso' : 'dolar',
+        final_value: row[3],
+        end_date: row[4],
+        initial_value: row[3] - row[6],
+        tir: row[7],
+        kind: 'cheque',
+        user: current_user
+      } 
+      Investment.create(investment_data)
+    end
+    redirect_to investments_path, notice: 'Investment was successfully created.'
+  end
+
   def create
     @investment = Investment.new(investment_params)
 

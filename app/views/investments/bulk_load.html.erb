@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bulk load Investments</h1>
+
+<%= simple_form_for :investments, url: create_bulk_investments_investments_path do |f| %>
+  <%= f.input :investments_xlsx, as: :file, required: true %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+<% end %>
