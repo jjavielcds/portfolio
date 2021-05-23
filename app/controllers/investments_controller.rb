@@ -5,6 +5,7 @@ class InvestmentsController < ApplicationController
 
   def index
     @investments = Investment.all
+    render json: Investment.all.to_json
   end
 
   def show; end
