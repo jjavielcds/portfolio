@@ -1,10 +1,14 @@
 import React, {Component} from 'react'
+import SimpleBottomNavigation from './SimpleBottomNavigation'
 
 class App extends Component{
     render(){
         const hello = 'Hello world!'
         return(
-            <div>{hello}</div>
+            <div>
+                <SimpleBottomNavigation/>
+                {hello}
+            </div>
         )
     }
 }
