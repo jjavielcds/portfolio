@@ -2,9 +2,8 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import BottomNavigation from '@material-ui/core/BottomNavigation';
 import BottomNavigationAction from '@material-ui/core/BottomNavigationAction';
-import RestoreIcon from '@material-ui/icons/Restore';
-import FavoriteIcon from '@material-ui/icons/Favorite';
 import LocationOnIcon from '@material-ui/icons/LocationOn';
+import Investments from './investments/Investments';
 
 import {
   BrowserRouter as Router,
@@ -22,9 +21,7 @@ const useStyles = makeStyles({
 {/* A <Switch> looks through its children <Route>s and
     renders the first one that matches the current URL. */}
 const routes =  <Switch>
-                  <Route path="/about">
-                    <About />
-                  </Route>
+                  <Route path="/investments" component={Investments} />
                   <Route path="/users">
                     <Users />
                   </Route>
@@ -35,10 +32,6 @@ const routes =  <Switch>
 
 function Home() {
 return <h2>Home</h2>;
-}
-
-function About() {
-return <h2>About</h2>;
 }
 
 function Users() {
@@ -60,7 +53,7 @@ export default function SimpleBottomNavigation() {
             className={classes.root}
           >
             <BottomNavigationAction label="home" icon={<LocationOnIcon />} component={Link} to="/" />
-            <BottomNavigationAction label="about" icon={<LocationOnIcon />} component={Link} to="/about" />
+            <BottomNavigationAction label="investments" icon={<LocationOnIcon />} component={Link} to="/investments" />
             <BottomNavigationAction label="users" icon={<LocationOnIcon />} component={Link} to="/users" />
           </BottomNavigation>
           {routes}
