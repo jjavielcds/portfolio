@@ -21,7 +21,7 @@ const useStyles = makeStyles({
 {/* A <Switch> looks through its children <Route>s and
     renders the first one that matches the current URL. */}
 const routes =  <Switch>
-                  <Route path="/investments" component={Investments} />
+                  <Route path="/investmentss" component={Investments} />
                   <Route path="/users">
                     <Users />
                   </Route>
@@ -53,7 +53,7 @@ export default function SimpleBottomNavigation() {
             className={classes.root}
           >
             <BottomNavigationAction label="home" icon={<LocationOnIcon />} component={Link} to="/" />
-            <BottomNavigationAction label="investments" icon={<LocationOnIcon />} component={Link} to="/investments" />
+            <BottomNavigationAction label="investmentss" icon={<LocationOnIcon />} component={Link} to="/investmentss" />
             <BottomNavigationAction label="users" icon={<LocationOnIcon />} component={Link} to="/users" />
           </BottomNavigation>
           {routes}
